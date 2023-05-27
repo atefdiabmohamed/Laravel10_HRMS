@@ -23,8 +23,19 @@
     <div class="content">
       <div class="container-fluid">
      <div class="row" style="background-color: white;">
-     @yield('content')
+      @if(Session::has('error'))
+      <div class="alert alert-danger text-right" role="alert">
+      {{ Session::get('error') }}  
+      </div>
+   @endif
+   @if(Session::has('success'))
+   <div class="alert alert-success text-right" role="alert">
+   {{ Session::get('success') }}  
+   </div>
+@endif
 
+     @yield('content')
+      
 
      </div>
       </div><!-- /.container-fluid -->

@@ -41,11 +41,15 @@
                <td> {{ $data['email'] }}</td>
             </tr>
             <tr>
+               <td class="width30"> بعد كم دقيقة نحسب تاخير حضور	</td>
+               <td> {{ $data['after_miniute_calculate_delay'] }}</td>
+            </tr>
+            <tr>
                <td class="width30"> بعد كم دقيقة نحسب انصراف مبكر	</td>
                <td> {{ $data['after_miniute_calculate_delay'] }}</td>
             </tr>
             <tr>
-               <td class="width30"> بعد كم دقيقه مجموع الانصارف المبكر او الحضور المتأخر نحصم ربع يوم	</td>
+               <td class="width30"> بعد كم دقيقه مجموع الانصراف المبكر او الحضور المتأخر نحصم ربع يوم	</td>
                <td> {{ $data['after_miniute_quarterday'] }}</td>
             </tr>
             <tr>
@@ -85,7 +89,7 @@
                <td> {{ $data['sanctions_value_forth_abcence'] }}</td>
             </tr>
             <tr>
-               <td colspan="2" class="text-center">  <a class="btn btn-sm btn-danger">تعديل</a> </td>
+               <td colspan="2" class="text-center">  <a href="{{ route('admin_panel_settings.edit') }}" class="btn btn-sm btn-danger">تعديل</a> </td>
             </tr>
          </table>
          @else

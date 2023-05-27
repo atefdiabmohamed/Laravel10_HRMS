@@ -38,3 +38,21 @@ h4.modal-title {
 .customh3{
     font-size: 18px; text-align: center;color: brown
 }
+
+a.btn.btn-sm.btn-danger {
+    color: white;
+}
+
+.card{
+    width: 100% !important;
+}
+
+.alert.alert-success.text-right {
+    width: 100%;
+    text-align: right !important;
+}
+
+.alert.alert-danger.text-right {
+    width: 100%;
+    text-align: right !important;
+}
