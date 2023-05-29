@@ -15,7 +15,7 @@ class Finance_calendersController extends Controller
     public function index()
     {
     $data=Finance_calender::select("*")->orderby('FINANCE_YR','DESC')->paginate(PAGEINATION_COUNTER);
-    return view('admin.Finance_calender.index',['date'=>$data]);
+    return view('admin.Finance_calender.index',['data'=>$data]);
     }
 
     /**
@@ -39,6 +39,7 @@ class Finance_calendersController extends Controller
        $dataToInsert['start_date']=$request->start_date;
        $dataToInsert['end_date']=$request->end_date;
        $dataToInsert['added_by']=auth()->user()->id;
+       $dataToInsert['com_code']=auth()->user()->com_code;
        $falg=Finance_calender::insert($dataToInsert);
       DB::commit();
       return redirect()->route('finance_calender.index')->with(['success'=>'تم ادخال البيانات بنجاح']);

@@ -16,7 +16,7 @@
    <div class="card">
       <div class="card-header">
          <h3 class="card-title card_title_center">  بيانات السنوات المالية 
- <a href="{{ route('finance_calender.create') }}" class="btn btn-sm btn-success">اضافة جديد</a>
+ <a href="{{ route('finance_calender.create') }}" class="btn btn-sm btn-warning">اضافة جديد</a>
 
          </h3>
       </div>
@@ -40,9 +40,23 @@
     <td> {{ $info->FINANCE_YR_DESC }} </td>
     <td> {{ $info->start_date }} </td>
     <td> {{ $info->end_date }} </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>
+    <td>{{ $info->added->name }} </td>
+    <td>
+    @if($info->updated_by>0)
+    <td>{{ $info->updatedby->name }} </td>
+    @else
+ لايوجد
+    @endif
+    </td>
+    <td>
+    @if($info->is_open==0)
+    <a  href="{{ route('finance_calender.edit',$info->id) }}" class="btn btn-success btn-sm">تعديل</a>
+    <a  href="{{ route('finance_calender.destroy',$info->id) }}" class="btn btn-danger btn-sm">حذف</a>
+    @else
+ سنة مالية مفتوحه
+    @endif
+        
+    </td>
     
 </tr> 
 @endforeach
