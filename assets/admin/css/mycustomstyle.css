@@ -56,3 +56,8 @@ a.btn.btn-sm.btn-danger {
     width: 100%;
     text-align: right !important;
 }
+
+a.btn.btn-sm.btn-success {
+    color: white;
+}
+
