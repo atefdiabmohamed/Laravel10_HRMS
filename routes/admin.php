@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Admin_panel_settingController;
+use App\Http\Controllers\Admin\Finance_calendersController;
 
 
 /*
@@ -17,7 +18,8 @@ use App\Http\Controllers\Admin\Admin_panel_settingController;
 |
 */
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
+define('PAGEINATION_COUNTER',11);
+Route::group([ 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
    Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
    /*  بداية الضبط العام */
@@ -25,8 +27,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
   Route::get('/generalSettingsEdit',[Admin_panel_settingController::class,'edit'])->name('admin_panel_settings.edit');
   Route::get('/generalSettingsupdate',[Admin_panel_settingController::class,'update'])->name('admin_panel_settings.update');
 
-
-
+   /*  بداية  تكويد السنوات المالية */
+  Route::resource('/finance_calender', Finance_calendersController::class);
 
 
 
