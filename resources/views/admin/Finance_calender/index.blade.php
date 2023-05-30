@@ -51,7 +51,7 @@
     <td>
     @if($info->is_open==0)
     <a  href="{{ route('finance_calender.edit',$info->id) }}" class="btn btn-success btn-sm">تعديل</a>
-    <a  href="{{ route('finance_calender.destroy',$info->id) }}" class="btn btn-danger btn-sm">حذف</a>
+    <a  href="{{ route('finance_calender.delete',$info->id) }}" class="btn are_you_shur  btn-danger btn-sm">حذف</a>
     @else
  سنة مالية مفتوحه
     @endif
