@@ -65,3 +65,8 @@ a.btn.btn-sm.btn-warning {
     color: white;
 }
 
+div#show_year_monthesModalBody {
+    background-color: white;
+    color: black;
+}
+

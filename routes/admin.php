@@ -29,6 +29,7 @@ Route::group([ 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 
    /*  بداية  تكويد السنوات المالية */
   Route::get('/finance_calender/delete/{id}',[Finance_calendersController::class,'destroy'])->name('finance_calender.delete');
+  Route::post('/finance_calender/show_year_monthes',[Finance_calendersController::class,'show_year_monthes'])->name('finance_calender.show_year_monthes');
   Route::resource('/finance_calender', Finance_calendersController::class);
 
 
