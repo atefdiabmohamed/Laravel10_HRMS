@@ -47,7 +47,8 @@ class Finance_calendersController extends Controller
        $dataToInsert['com_code']=auth()->user()->com_code;
        $falg=Finance_calender::insert($dataToInsert);
        if($falg){
-  $dataParent=Finance_calender::select("id")->where($dataToInsert)->first();
+
+ $dataParent=Finance_calender::select("id")->where($dataToInsert)->first();
 $startDate=new DateTime($request->start_date);
 $endDate=new DateTime($request->end_date);
 $dareInterval=new DateInterval('P1M');
