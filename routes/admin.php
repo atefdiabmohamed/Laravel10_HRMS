@@ -28,6 +28,7 @@ Route::group([ 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
   Route::get('/generalSettingsupdate',[Admin_panel_settingController::class,'update'])->name('admin_panel_settings.update');
 
    /*  بداية  تكويد السنوات المالية */
+  Route::get('/finance_calender/delete/{id}',[Finance_calendersController::class,'destroy'])->name('finance_calender.delete');
   Route::resource('/finance_calender', Finance_calendersController::class);
 
 
