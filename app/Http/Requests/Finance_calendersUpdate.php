@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Finance_calenders_Request extends FormRequest
+class Finance_calendersUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class Finance_calenders_Request extends FormRequest
     public function rules(): array 
     {
         return [
-        'FINANCE_YR'=>'required|unique:finance_calenders',
+        'FINANCE_YR'=>'required',
         'FINANCE_YR_DESC'=>'required' ,
         'start_date'=>'required',
         'end_date'=>'required'
