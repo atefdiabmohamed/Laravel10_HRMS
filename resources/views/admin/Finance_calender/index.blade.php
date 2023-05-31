@@ -42,13 +42,16 @@
                   <td>{{ $info->added->name }} </td>
                   <td>
                      @if($info->updated_by>0)
-                  <td>{{ $info->updatedby->name }} </td>
+                  {{ $info->updatedby->name }} 
                   @else
                   لايوجد
                   @endif
                   </td>
                   <td>
                      @if($info->is_open==0)
+                      @if($CheckDataOpenCounter==0)
+                     <a  href="{{ route('finance_calender.do_open',$info->id) }}" class="btn btn-primary btn-sm">فتح</a>
+                    @endif
                      <a  href="{{ route('finance_calender.edit',$info->id) }}" class="btn btn-success btn-sm">تعديل</a>
                      <a  href="{{ route('finance_calender.delete',$info->id) }}" class="btn are_you_shur  btn-danger btn-sm">حذف</a>
                      <button class="btn btn-sm btn-info show_year_monthes" data-id="{{ $info->id }}"  >عرض الشهور</button>
