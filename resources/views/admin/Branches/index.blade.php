@@ -6,7 +6,7 @@
 قائمة الضبط
 @endsection
 @section('contentheaderactivelink')
-<a href="{{ route('finance_calender.index') }}">   الفروع</a>
+<a href="{{ route('branches.index') }}">   الفروع</a>
 @endsection
 @section('contentheaderactive')
 عرض
@@ -37,10 +37,13 @@
             <tbody>
                @foreach ( $data as $info )
                <tr>
-                  <td> {{ $info->FINANCE_YR }} </td>
-                  <td> {{ $info->FINANCE_YR_DESC }} </td>
-                  <td> {{ $info->start_date }} </td>
-                  <td> {{ $info->end_date }} </td>
+                  <td> {{ $info->id }} </td>
+                  <td> {{ $info->name }} </td>
+                  <td> {{ $info->address }} </td>
+                  <td> {{ $info->phones }} </td>
+                  <td> {{ $info->email }} </td>
+                  <td @if ($info->active==1) class="bg-success" @else class="bg-danger"  @endif      > @if ($info->active==1) مفعل @else معطل @endif</td>
+
                   <td>{{ $info->added->name }} </td>
                   <td>
                      @if($info->updated_by>0)
@@ -50,16 +53,11 @@
                   @endif
                   </td>
                   <td>
-                     @if($info->is_open==0)
-                      @if($CheckDataOpenCounter==0)
+                
                      <a  href="{{ route('finance_calender.do_open',$info->id) }}" class="btn btn-primary btn-sm">فتح</a>
-                    @endif
                      <a  href="{{ route('finance_calender.edit',$info->id) }}" class="btn btn-success btn-sm">تعديل</a>
                      <a  href="{{ route('finance_calender.delete',$info->id) }}" class="btn are_you_shur  btn-danger btn-sm">حذف</a>
-                     <button class="btn btn-sm btn-info show_year_monthes" data-id="{{ $info->id }}"  >عرض الشهور</button>
-                     @else
-                     سنة مالية مفتوحه
-                     @endif
+                  
                   </td>
                </tr>
                @endforeach
@@ -73,26 +71,7 @@
    </div>
 </div>
 
-<div class="modal fade " id="show_year_monthesModal" >
-   <div class="modal-dialog modal-xl">
-     <div class="modal-content bg-info">
-       <div class="modal-header">
-         <h4 class="modal-title">عرض الشهور  للسنة المالية</h4>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span></button>
-       </div>
-       <div class="modal-body" id="show_year_monthesModalBody">
-  
-       </div>
-       <div class="modal-footer justify-content-between">
-         <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-         <button type="button" class="btn btn-outline-light">Save changes</button>
-       </div>
-     </div>
-     <!-- /.modal-content -->
-   </div>
-   <!-- /.modal-dialog -->
- </div>
+
 
 @endsection
 @section('script')
