@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Admin_panel_settingController;
 use App\Http\Controllers\Admin\Finance_calendersController;
+use App\Http\Controllers\Admin\BranchesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,11 @@ Route::get('/finance_calender/delete/{id}',[Finance_calendersController::class,'
 Route::post('/finance_calender/show_year_monthes',[Finance_calendersController::class,'show_year_monthes'])->name('finance_calender.show_year_monthes');
 Route::get('/finance_calender/do_open/{id}',[Finance_calendersController::class,'do_open'])->name('finance_calender.do_open');
 Route::resource('/finance_calender', Finance_calendersController::class);
+/* بداية الفروع */
+Route::get("/branches",[BranchesController::class,'index'])->name('branches.index');
+Route::get("/branchesCreate",[BranchesController::class,'create'])->name('branches.create');
+
+
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
 Route::get('login', [LoginController::class, 'show_login_view'])->name('admin.showlogin');
