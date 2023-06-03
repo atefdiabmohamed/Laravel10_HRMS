@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\BranchesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-define('PAGEINATION_COUNTER',11);
+define('PC',11);
 Route::group([ 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
@@ -32,6 +32,7 @@ Route::resource('/finance_calender', Finance_calendersController::class);
 /* بداية الفروع */
 Route::get("/branches",[BranchesController::class,'index'])->name('branches.index');
 Route::get("/branchesCreate",[BranchesController::class,'create'])->name('branches.create');
+Route::post("/branchesStore",[BranchesController::class,'store'])->name('branches.store');
 
 
 });

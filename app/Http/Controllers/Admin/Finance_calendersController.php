@@ -20,7 +20,8 @@ class Finance_calendersController extends Controller
 */
 public function index()
 {
-$data = Finance_calender::select("*")->orderby('FINANCE_YR', 'DESC')->paginate(PAGEINATION_COUNTER);
+ $com_code=auth()->user()->com_code;   
+$data=get_cols_where_p(new Finance_calender(),array("*"),array("com_code"=>$com_code),"id","DESC",PC);
 $CheckDataOpenCounter = Finance_calender::where(['is_open' => 1])->count();
 return view('admin.Finance_calender.index', ['data' => $data,'CheckDataOpenCounter'=>$CheckDataOpenCounter]);
 }
