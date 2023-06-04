@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Admin_panel_settingController;
 use App\Http\Controllers\Admin\Finance_calendersController;
 use App\Http\Controllers\Admin\BranchesController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,8 +32,9 @@ Route::resource('/finance_calender', Finance_calendersController::class);
 Route::get("/branches",[BranchesController::class,'index'])->name('branches.index');
 Route::get("/branchesCreate",[BranchesController::class,'create'])->name('branches.create');
 Route::post("/branchesStore",[BranchesController::class,'store'])->name('branches.store');
-
-
+Route::get("/branchesEdit/{id}",[BranchesController::class,'edit'])->name('branches.edit');
+Route::post("/branchesUpdate/{id}",[BranchesController::class,'update'])->name('branches.update');
+Route::get("/branchesDelete/{id}",[BranchesController::class,'destroy'])->name('branches.destroy');
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
 Route::get('login', [LoginController::class, 'show_login_view'])->name('admin.showlogin');
