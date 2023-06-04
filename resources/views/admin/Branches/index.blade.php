@@ -20,7 +20,6 @@
          </h3>
       </div>
       <div class="card-body">
-
          @if(@isset($data) and !@empty($data) )
          <table id="example2" class="table table-bordered table-hover">
             <thead class="custom_thead">
@@ -43,21 +42,17 @@
                   <td> {{ $info->phones }} </td>
                   <td> {{ $info->email }} </td>
                   <td @if ($info->active==1) class="bg-success" @else class="bg-danger"  @endif      > @if ($info->active==1) مفعل @else معطل @endif</td>
-
                   <td>{{ $info->added->name }} </td>
                   <td>
                      @if($info->updated_by>0)
-                  {{ $info->updatedby->name }} 
-                  @else
-                  لايوجد
-                  @endif
+                     {{ $info->updatedby->name }} 
+                     @else
+                     لايوجد
+                     @endif
                   </td>
                   <td>
-                
-                     <a  href="{{ route('finance_calender.do_open',$info->id) }}" class="btn btn-primary btn-sm">فتح</a>
-                     <a  href="{{ route('finance_calender.edit',$info->id) }}" class="btn btn-success btn-sm">تعديل</a>
-                     <a  href="{{ route('finance_calender.delete',$info->id) }}" class="btn are_you_shur  btn-danger btn-sm">حذف</a>
-                  
+                     <a  href="{{ route('branches.edit',$info->id) }}" class="btn btn-success btn-sm">تعديل</a>
+                     <a  href="{{ route('branches.destroy',$info->id) }}" class="btn are_you_shur  btn-danger btn-sm">حذف</a>
                   </td>
                </tr>
                @endforeach
@@ -66,39 +61,7 @@
          @else
          <p class="bg-danger text-center"> عفوا لاتوجد بيانات لعرضها</p>
          @endif
-
       </div>
    </div>
 </div>
-
-
-
-@endsection
-@section('script')
-<script>
-   $(document).ready(function(){
-      $(document).on('click','.show_year_monthes',function(){
-    var id=$(this).data('id');
-    jQuery.ajax({
-   url:'{{ route('finance_calender.show_year_monthes') }}',
-   type:'post',
-   'dataType':'html',
-   cache:false,
-   data:{ "_token":'{{ csrf_token() }}','id':id },
-   success:function(data){
-   $("#show_year_monthesModalBody").html(data);
-   $("#show_year_monthesModal").modal("show");
-   },
-   error:function(){
-   
-   }
-   
-    });
-   
-   
-      });
-   });
-   
-   
-</script>
 @endsection

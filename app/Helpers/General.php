@@ -1,5 +1,4 @@
 <?php 
-
 function uploadImage($folder, $image)
 {
 $extension = strtolower($image->extension());
@@ -8,7 +7,6 @@ $image->getClientOriginalName = $filename;
 $image->move($folder, $filename);
 return $filename;
 }
-
 /*get some cols by pagination table */
 function get_cols_where_p($model=null, $columns_names = array(), $where = array(), $order_field="id",$order_type="DESC",$pagination_counter=13)
 {
@@ -84,7 +82,7 @@ function update($model=null,$data_to_update=array(),$where=array()){
 $flag=$model::where($where)->update($data_to_update);
 return $flag;
 }
-function delete($model=null,$where=array()){
+function destroy($model=null,$where=array()){
 $flag=$model::where($where)->delete();
 return $flag;
 }
@@ -92,4 +90,3 @@ function get_sum_where($model=null,$field_name=null,$where=array()){
 $sum=$model::where($where)->sum($field_name);
 return $sum;
 }
-
