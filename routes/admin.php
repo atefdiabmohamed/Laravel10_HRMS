@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Admin_panel_settingController;
 use App\Http\Controllers\Admin\Finance_calendersController;
 use App\Http\Controllers\Admin\BranchesController;
+use App\Http\Controllers\Admin\ShiftsTypesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +37,15 @@ Route::post("/branchesStore",[BranchesController::class,'store'])->name('branche
 Route::get("/branchesEdit/{id}",[BranchesController::class,'edit'])->name('branches.edit');
 Route::post("/branchesUpdate/{id}",[BranchesController::class,'update'])->name('branches.update');
 Route::get("/branchesDelete/{id}",[BranchesController::class,'destroy'])->name('branches.destroy');
+
+/* بداية انواع شفتات الموظفين */
+Route::get("/ShiftsTypes",[ShiftsTypesController::class,'index'])->name('ShiftsTypes.index');
+
+
 });
+
+
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
 Route::get('login', [LoginController::class, 'show_login_view'])->name('admin.showlogin');
 Route::post('login', [LoginController::class, 'login'])->name('admin.login');
