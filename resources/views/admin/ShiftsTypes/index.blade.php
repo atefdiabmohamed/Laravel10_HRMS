@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('title')
-الفروع
+الشفتات
 @endsection
 @section('contentheader')
 قائمة الضبط
 @endsection
 @section('contentheaderactivelink')
-<a href="{{ route('branches.index') }}">   الفروع</a>
+<a href="{{ route('ShiftsTypes.index') }}">   الشفتات</a>
 @endsection
 @section('contentheaderactive')
 عرض
@@ -15,19 +15,18 @@
 <div class="col-12">
    <div class="card">
       <div class="card-header">
-         <h3 class="card-title card_title_center">  بيانات  الفروع 
-            <a href="{{ route('branches.create') }}" class="btn btn-sm btn-warning">اضافة جديد</a>
+         <h3 class="card-title card_title_center">  بيانات  أنواع شفتات الموظفين 
+            <a href="{{ route('ShiftsTypes.create') }}" class="btn btn-sm btn-warning">اضافة جديد</a>
          </h3>
       </div>
       <div class="card-body">
-         @if(@isset($data) and !@empty($data) )
+         @if(@isset($data) and !@empty($data) and count($data)>0 )
          <table id="example2" class="table table-bordered table-hover">
             <thead class="custom_thead">
-               <th>  كود الفرع</th>
-               <th>  الاسم</th>
-               <th>   العنوان</th>
-               <th>   الهاتف</th>
-               <th>   الايميل</th>
+               <th>   نوع الشفت</th>
+               <th>  يبدأ من الساعة</th>
+               <th>   ينتهي الساعة</th>
+               <th>   عدد الساعات</th>
                <th>   حالة التفعيل</th>
                <th>  الاضافة بواسطة</th>
                <th>  التحديث بواسطة</th>
@@ -36,23 +35,60 @@
             <tbody>
                @foreach ( $data as $info )
                <tr>
-                  <td> {{ $info->id }} </td>
-                  <td> {{ $info->name }} </td>
-                  <td> {{ $info->address }} </td>
-                  <td> {{ $info->phones }} </td>
-                  <td> {{ $info->email }} </td>
+                  <td>@if($info->type==1) صباحي @else مسائي  @endif</td>
+                  <td> 
+                     @php
+                     $time=date("h:i",strtotime($info->from_time));
+                     $newDateTime=date("A",strtotime($info->from_time));
+                     $newDateTimeType= (($newDateTime=='AM')?'صباحا ':'مساء'); 
+                     @endphp
+                     {{ $time }}
+                     {{ $newDateTimeType }}   
+                  </td>
+                  <td>
+                     @php
+                     $time=date("h:i",strtotime($info->to_time));
+                     $newDateTime=date("A",strtotime($info->to_time));
+                     $newDateTimeType= (($newDateTime=='AM')?'صباحا ':'مساء'); 
+                     @endphp
+                     {{ $time }}
+                     {{ $newDateTimeType }}   
+                  </td>
+                  <td> {{ $info->total_hour*1 }} </td>
                   <td @if ($info->active==1) class="bg-success" @else class="bg-danger"  @endif      > @if ($info->active==1) مفعل @else معطل @endif</td>
-                  <td>{{ $info->added->name }} </td>
+                  <td>
+                     @php
+                     $dt=new DateTime($info->created_at);
+                     $date=$dt->format("Y-m-d");
+                     $time=$dt->format("h:i");
+                     $newDateTime=date("A",strtotime($time));
+                     $newDateTimeType= (($newDateTime=='AM')?'صباحا ':'مساء'); 
+                     @endphp
+                     {{ $date }} <br>
+                     {{ $time }}
+                     {{ $newDateTimeType }}  <br>
+                     {{ $info->added->name }} 
+                  </td>
                   <td>
                      @if($info->updated_by>0)
+                     @php
+                     $dt=new DateTime($info->updated_at);
+                     $date=$dt->format("Y-m-d");
+                     $time=$dt->format("h:i");
+                     $newDateTime=date("A",strtotime($time));
+                     $newDateTimeType= (($newDateTime=='AM')?'صباحا ':'مساء'); 
+                     @endphp
+                     {{ $date }}  <br>
+                     {{ $time }}
+                     {{ $newDateTimeType }}  <br>
                      {{ $info->updatedby->name }} 
                      @else
                      لايوجد
                      @endif
                   </td>
                   <td>
-                     <a  href="{{ route('branches.edit',$info->id) }}" class="btn btn-success btn-sm">تعديل</a>
-                     <a  href="{{ route('branches.destroy',$info->id) }}" class="btn are_you_shur  btn-danger btn-sm">حذف</a>
+                     <a  href="{{ route('ShiftsTypes.edit',$info->id) }}" class="btn btn-success btn-sm">تعديل</a>
+                     <a  href="{{ route('ShiftsTypes.destroy',$info->id) }}" class="btn are_you_shur  btn-danger btn-sm">حذف</a>
                   </td>
                </tr>
                @endforeach

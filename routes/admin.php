@@ -40,6 +40,11 @@ Route::get("/branchesDelete/{id}",[BranchesController::class,'destroy'])->name('
 
 /* بداية انواع شفتات الموظفين */
 Route::get("/ShiftsTypes",[ShiftsTypesController::class,'index'])->name('ShiftsTypes.index');
+Route::get("/ShiftsTypesCreate",[ShiftsTypesController::class,'create'])->name('ShiftsTypes.create');
+Route::post("/ShiftsTypesStore",[ShiftsTypesController::class,'store'])->name('ShiftsTypes.store');
+Route::get("/ShiftsTypesEdit/{id}",[ShiftsTypesController::class,'edit'])->name('ShiftsTypes.edit');
+Route::post("/ShiftsTypesUpdate/{id}",[ShiftsTypesController::class,'update'])->name('ShiftsTypes.update');
+Route::get("/ShiftsTypesDestroy/{id}",[ShiftsTypesController::class,'destroy'])->name('ShiftsTypes.destroy');
 
 
 });
