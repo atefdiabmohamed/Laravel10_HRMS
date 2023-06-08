@@ -45,6 +45,7 @@ Route::post("/ShiftsTypesStore",[ShiftsTypesController::class,'store'])->name('S
 Route::get("/ShiftsTypesEdit/{id}",[ShiftsTypesController::class,'edit'])->name('ShiftsTypes.edit');
 Route::post("/ShiftsTypesUpdate/{id}",[ShiftsTypesController::class,'update'])->name('ShiftsTypes.update');
 Route::get("/ShiftsTypesDestroy/{id}",[ShiftsTypesController::class,'destroy'])->name('ShiftsTypes.destroy');
+Route::post("/ShiftsTypesajax_search/",[ShiftsTypesController::class,'ajax_search'])->name('ShiftsTypes.ajax_search');
 
 
 });
