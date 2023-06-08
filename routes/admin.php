@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\ShiftsTypesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-define('PC',11);
+define('PC',1);
 Route::group([ 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
@@ -45,6 +45,7 @@ Route::post("/ShiftsTypesStore",[ShiftsTypesController::class,'store'])->name('S
 Route::get("/ShiftsTypesEdit/{id}",[ShiftsTypesController::class,'edit'])->name('ShiftsTypes.edit');
 Route::post("/ShiftsTypesUpdate/{id}",[ShiftsTypesController::class,'update'])->name('ShiftsTypes.update');
 Route::get("/ShiftsTypesDestroy/{id}",[ShiftsTypesController::class,'destroy'])->name('ShiftsTypes.destroy');
+Route::post("/ShiftsTypesajax_search/",[ShiftsTypesController::class,'ajax_search'])->name('ShiftsTypes.ajax_search');
 
 
 });
