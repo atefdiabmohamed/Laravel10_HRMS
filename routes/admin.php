@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\ShiftsTypesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-define('PC',11);
+define('PC',1);
 Route::group([ 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
