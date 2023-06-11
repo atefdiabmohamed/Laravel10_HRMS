@@ -6,6 +6,10 @@ use App\Http\Controllers\Admin\Admin_panel_settingController;
 use App\Http\Controllers\Admin\Finance_calendersController;
 use App\Http\Controllers\Admin\BranchesController;
 use App\Http\Controllers\Admin\ShiftsTypesController;
+use App\Http\Controllers\Admin\DepartementsController;
+use App\Http\Controllers\Admin\Jobs_categoriesController;;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +21,7 @@ use App\Http\Controllers\Admin\ShiftsTypesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-define('PC',1);
+define('PC',11);
 Route::group([ 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
@@ -46,6 +50,21 @@ Route::get("/ShiftsTypesEdit/{id}",[ShiftsTypesController::class,'edit'])->name(
 Route::post("/ShiftsTypesUpdate/{id}",[ShiftsTypesController::class,'update'])->name('ShiftsTypes.update');
 Route::get("/ShiftsTypesDestroy/{id}",[ShiftsTypesController::class,'destroy'])->name('ShiftsTypes.destroy');
 Route::post("/ShiftsTypesajax_search/",[ShiftsTypesController::class,'ajax_search'])->name('ShiftsTypes.ajax_search');
+/*  بداية الادارات*/
+Route::get('/departements',[DepartementsController::class,'index'])->name('departements.index');
+Route::get('/departementsCreate',[DepartementsController::class,'create'])->name('departements.create');
+Route::post('/departementsStore',[DepartementsController::class,'store'])->name('departements.store');
+Route::get('/departementsEdit/{id}',[DepartementsController::class,'edit'])->name('departements.edit');
+Route::post('/departementsUpdate/{id}',[DepartementsController::class,'update'])->name('departements.update');
+Route::get('/departementsDestroy/{id}',[DepartementsController::class,'destroy'])->name('departements.destroy');
+
+/*  بداية فئات الوظائف*/
+Route::get('/jobs_categories',[Jobs_categoriesController::class,'index'])->name('jobs_categories.index');
+Route::get('/jobs_categoriesCreate',[Jobs_categoriesController::class,'create'])->name('jobs_categories.create');
+Route::post('/jobs_categoriesStore',[Jobs_categoriesController::class,'store'])->name('jobs_categories.store');
+Route::get('/jobs_categoriesEdit/{id}',[Jobs_categoriesController::class,'edit'])->name('jobs_categories.edit');
+Route::post('/jobs_categoriesUpdate/{id}',[Jobs_categoriesController::class,'update'])->name('jobs_categories.update');
+Route::get('/jobs_categoriesDestroy/{id}',[Jobs_categoriesController::class,'destroy'])->name('jobs_categories.destroy');
 
 
 });
