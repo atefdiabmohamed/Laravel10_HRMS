@@ -14,8 +14,8 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li class="nav-item has-treeview    {{ ( request()->is('admin/generalSettings*') || request()->is('admin/finance_calender*') || request()->is('admin/branches*') || request()->is('admin/ShiftsTypes*') || request()->is('admin/departements*')  || request()->is('admin/jobs_categories*') ) ? 'menu-open':'' }} ">
-          <a href="#" class="nav-link {{ ( request()->is('admin/generalSettings*') || request()->is('admin/finance_calender*') || request()->is('admin/branches*') || request()->is('admin/ShiftsTypes*') || request()->is('admin/departements*') || request()->is('admin/jobs_categories*')  ) ? 'active':'' }} ">
+        <li class="nav-item has-treeview    {{ ( request()->is('admin/generalSettings*') || request()->is('admin/finance_calender*') || request()->is('admin/branches*') || request()->is('admin/ShiftsTypes*') || request()->is('admin/departements*')  || request()->is('admin/jobs_categories*') || request()->is('admin/Qualifications*') ) ? 'menu-open':'' }} ">
+          <a href="#" class="nav-link {{ ( request()->is('admin/generalSettings*') || request()->is('admin/finance_calender*') || request()->is('admin/branches*') || request()->is('admin/ShiftsTypes*') || request()->is('admin/departements*') || request()->is('admin/jobs_categories*')  || request()->is('admin/Qualifications*')  ) ? 'active':'' }} ">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
              قائمة الضبط
@@ -58,10 +58,17 @@
             <li class="nav-item">
               <a href="{{ route('jobs_categories.index') }}" class="nav-link  {{ (request()->is('admin/jobs_categories*'))?'active':'' }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>    فئات الوظائف</p>
+                <p>     وظائف الموظفين</p>
               </a>
             </li>
            
+            <li class="nav-item">
+              <a href="{{ route('Qualifications.index') }}" class="nav-link  {{ (request()->is('admin/Qualifications*'))?'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>     مؤهلات الموظفين</p>
+              </a>
+            </li>
+
           </ul>
         </li>
        
