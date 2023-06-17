@@ -25,7 +25,7 @@ class Finance_calenders_Request extends FormRequest
         'FINANCE_YR'=>'required|unique:finance_calenders',
         'FINANCE_YR_DESC'=>'required' ,
         'start_date'=>'required',
-        'end_date'=>'required'
+        'end_date'=>'required|gt:start_date'
         ];
     }
     public function messages(): array
@@ -34,8 +34,8 @@ class Finance_calenders_Request extends FormRequest
      'FINANCE_YR.required'=>'كود السنة المالية مطلوب',
      'FINANCE_YR.unique'=>'كود السنة مسجل من قبل ',
      'FINANCE_YR_DESC'=>'وصف السنة المالية مطلوب',
-     'start_date'=>'تاريخ بداية السنة المالية مطلوب',
-     'end_date'=>'تاريخ نهاية السنة المالية مطلوب'
+     'start_date.required'=>'تاريخ بداية السنة المالية مطلوب',
+     'end_date.required'=>'تاريخ نهاية السنة المالية مطلوب'
 
         ];
 
