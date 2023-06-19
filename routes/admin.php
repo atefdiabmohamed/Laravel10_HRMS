@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\DepartementsController;
 use App\Http\Controllers\Admin\Jobs_categoriesController;;
 use App\Http\Controllers\Admin\QualificationsController;
 use App\Http\Controllers\Admin\OccasionsController;
+use App\Http\Controllers\Admin\ResignationsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,7 +78,23 @@ Route::post('/occasionsStore', [OccasionsController::class, 'store'])->name('occ
 Route::get('/occasionsEdit/{id}', [OccasionsController::class, 'edit'])->name('occasions.edit');
 Route::post('/occasionsUpdate/{id}', [OccasionsController::class, 'update'])->name('occasions.update');
 Route::get('/occasionsDestroy/{id}', [OccasionsController::class, 'destroy'])->name('occasions.destroy');
+
+
+/*  بداية  انواع ترك العمل */
+Route::get('/Resignations', [ResignationsController::class, 'index'])->name('Resignations.index');
+Route::get('/ResignationsCreate', [ResignationsController::class, 'create'])->name('Resignations.create');
+Route::post('/ResignationsStore', [ResignationsController::class, 'store'])->name('Resignations.store');
+Route::get('/ResignationsEdit/{id}', [ResignationsController::class, 'edit'])->name('Resignations.edit');
+Route::post('/ResignationsUpdate/{id}', [ResignationsController::class, 'update'])->name('Resignations.update');
+Route::get('/ResignationsDestroy/{id}', [ResignationsController::class, 'destroy'])->name('Resignations.destroy');
+
+
+
 });
+
+
+
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
 Route::get('login', [LoginController::class, 'show_login_view'])->name('admin.showlogin');
 Route::post('login', [LoginController::class, 'login'])->name('admin.login');
