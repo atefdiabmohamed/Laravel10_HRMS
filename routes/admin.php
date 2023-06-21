@@ -9,9 +9,11 @@ use App\Http\Controllers\Admin\BranchesController;
 use App\Http\Controllers\Admin\ShiftsTypesController;
 use App\Http\Controllers\Admin\DepartementsController;
 use App\Http\Controllers\Admin\Jobs_categoriesController;;
+
 use App\Http\Controllers\Admin\QualificationsController;
 use App\Http\Controllers\Admin\OccasionsController;
 use App\Http\Controllers\Admin\ResignationsController;
+use App\Http\Controllers\Admin\NationalitiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +91,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/ResignationsEdit/{id}', [ResignationsController::class, 'edit'])->name('Resignations.edit');
     Route::post('/ResignationsUpdate/{id}', [ResignationsController::class, 'update'])->name('Resignations.update');
     Route::get('/ResignationsDestroy/{id}', [ResignationsController::class, 'destroy'])->name('Resignations.destroy');
+
+    /*  بداية  انواع  الجنسيات */
+    Route::get('/Nationalities', [NationalitiesController::class, 'index'])->name('Nationalities.index');
+    Route::get('/NationalitiesCreate', [NationalitiesController::class, 'create'])->name('Nationalities.create');
+    Route::post('/NationalitiesStore', [NationalitiesController::class, 'store'])->name('Nationalities.store');
+    Route::get('/NationalitiesEdit/{id}', [NationalitiesController::class, 'edit'])->name('Nationalities.edit');
+    Route::post('/NationalitiesUpdate/{id}', [NationalitiesController::class, 'update'])->name('Nationalities.update');
+    Route::get('/NationalitiesDestroy/{id}', [NationalitiesController::class, 'destroy'])->name('Nationalities.destroy');
 });
 
 
