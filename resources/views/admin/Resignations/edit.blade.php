@@ -1,30 +1,29 @@
 @extends('layouts.admin')
 @section('title')
-مؤهلات الموظفين
+أنواع ترك  العمل 
 @endsection
 @section('contentheader')
 قائمة الضبط
 @endsection
 @section('contentheaderactivelink')
-<a href="{{ route('Qualifications.index') }}">   الوظائف</a>
+<a href="{{ route('Resignations.index') }}">   انواع ترك العمل</a>
 @endsection
 @section('contentheaderactive')
 تعديل
 @endsection
-
 @section('content')
 <div class="col-12">
    <div class="card">
       <div class="card-header">
-         <h3 class="card-title card_title_center">  تعديل بيانات مؤهل 
+         <h3 class="card-title card_title_center">  تعديل بيانات نوع ترك عمل 
          </h3>
       </div>
       <div class="card-body">
-         <form action="{{ route('Qualifications.update',$data['id']) }}" method="post">
+         <form action="{{ route('Resignations.update',$data['id']) }}" method="post">
             @csrf
             <div class="col-md-12">
                <div class="form-group">
-                  <label>     اسم المؤهل</label>
+                  <label>     اسم النوع</label>
                   <input type="text" name="name" id="name" class="form-control" value="{{ old('name',$data['name']) }}"  >
                   @error('name')
                   <span class="text-danger">{{ $message }}</span> 
@@ -47,8 +46,8 @@
             </div>
             <div class="col-md-12">
                <div class="form-group text-center">
-                  <button class="btn btn-sm btn-success" type="submit" name="submit">تعديل المؤهل </button>
-                  <a href="{{ route('Qualifications.index') }}" class="btn btn-danger btn-sm">الغاء</a>
+                  <button class="btn btn-sm btn-success" type="submit" name="submit">تعديل النوع </button>
+                  <a href="{{ route('Resignations.index') }}" class="btn btn-danger btn-sm">الغاء</a>
                </div>
             </div>
          </form>
