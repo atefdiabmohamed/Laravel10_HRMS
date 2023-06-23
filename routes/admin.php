@@ -9,11 +9,11 @@ use App\Http\Controllers\Admin\BranchesController;
 use App\Http\Controllers\Admin\ShiftsTypesController;
 use App\Http\Controllers\Admin\DepartementsController;
 use App\Http\Controllers\Admin\Jobs_categoriesController;;
-
 use App\Http\Controllers\Admin\QualificationsController;
 use App\Http\Controllers\Admin\OccasionsController;
 use App\Http\Controllers\Admin\ResignationsController;
 use App\Http\Controllers\Admin\NationalitiesController;
+use App\Http\Controllers\Admin\ReligionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +99,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/NationalitiesEdit/{id}', [NationalitiesController::class, 'edit'])->name('Nationalities.edit');
     Route::post('/NationalitiesUpdate/{id}', [NationalitiesController::class, 'update'])->name('Nationalities.update');
     Route::get('/NationalitiesDestroy/{id}', [NationalitiesController::class, 'destroy'])->name('Nationalities.destroy');
+
+   /*  بداية  انواع  الديانات */
+   Route::get('/Religions/index', [ReligionController::class, 'index'])->name('Religions.index');
+   Route::get('/Religions/create', [ReligionController::class, 'create'])->name('Religions.create');
+   Route::post('/Religions/store', [ReligionController::class, 'store'])->name('Religions.store');
+   Route::get('/Religions/edit/{id}', [ReligionController::class, 'edit'])->name('Religions.edit');
+   Route::post('/Religions/update/{id}', [ReligionController::class, 'update'])->name('Religions.update');
+   Route::get('/Religions/destroy/{id}', [ReligionController::class, 'destroy'])->name('Religions.destroy');
+
+
+
 });
 
 
