@@ -14,6 +14,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+
         <li class="nav-item has-treeview    {{ ( request()->is('admin/generalSettings*') || request()->is('admin/finance_calender*') || request()->is('admin/branches*') || request()->is('admin/ShiftsTypes*') || request()->is('admin/departements*')  || request()->is('admin/jobs_categories*') || request()->is('admin/Qualifications*') || request()->is('admin/occasions*') || request()->is('admin/Resignations*') || request()->is('admin/Nationalities*') || request()->is('admin/Religions*')) ? 'menu-open':'' }} ">
           <a href="#" class="nav-link {{ ( request()->is('admin/generalSettings*') || request()->is('admin/finance_calender*') || request()->is('admin/branches*') || request()->is('admin/ShiftsTypes*') || request()->is('admin/departements*') || request()->is('admin/jobs_categories*')  || request()->is('admin/Qualifications*') ||request()->is('admin/occasions*') || request()->is('admin/Resignations*') || request()->is('admin/Nationalities*') || request()->is('admin/Religions*') ) ? 'active':'' }} ">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -98,6 +99,59 @@
             </li>
           </ul>
         </li>
+
+        <li class="nav-item has-treeview    {{ ( request()->is('admin/Employees*')) ? 'menu-open':'' }} ">
+          <a href="#" class="nav-link {{ ( request()->is('admin/Employees*')  ) ? 'active':'' }} ">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+             قائمة شئون الموظفين
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('Employees.index') }}" class="nav-link {{ (request()->is('admin/Employees*'))?'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p> بيانات الموظفين</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('admin_panel_settings.index') }}" class="nav-link {{ (request()->is('admin/generalSettings*'))?'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p> بيانات موظفين الادارة</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('admin_panel_settings.index') }}" class="nav-link {{ (request()->is('admin/generalSettings*'))?'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p> انواع الاضافي للراتب</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{ route('admin_panel_settings.index') }}" class="nav-link {{ (request()->is('admin/generalSettings*'))?'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p> انواع الخصم للراتب</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('admin_panel_settings.index') }}" class="nav-link {{ (request()->is('admin/generalSettings*'))?'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p> انواع البدلات للراتب</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('admin_panel_settings.index') }}" class="nav-link {{ (request()->is('admin/generalSettings*'))?'active':'' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>   هواتف الموظفين</p>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+
+
        
       </ul>
     </nav>
