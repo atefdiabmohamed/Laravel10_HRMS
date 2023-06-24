@@ -9,11 +9,13 @@ use App\Http\Controllers\Admin\BranchesController;
 use App\Http\Controllers\Admin\ShiftsTypesController;
 use App\Http\Controllers\Admin\DepartementsController;
 use App\Http\Controllers\Admin\Jobs_categoriesController;;
+
 use App\Http\Controllers\Admin\QualificationsController;
 use App\Http\Controllers\Admin\OccasionsController;
 use App\Http\Controllers\Admin\ResignationsController;
 use App\Http\Controllers\Admin\NationalitiesController;
 use App\Http\Controllers\Admin\ReligionController;
+use App\Http\Controllers\Admin\EmployeesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,16 +102,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('/NationalitiesUpdate/{id}', [NationalitiesController::class, 'update'])->name('Nationalities.update');
     Route::get('/NationalitiesDestroy/{id}', [NationalitiesController::class, 'destroy'])->name('Nationalities.destroy');
 
-   /*  بداية  انواع  الديانات */
-   Route::get('/Religions/index', [ReligionController::class, 'index'])->name('Religions.index');
-   Route::get('/Religions/create', [ReligionController::class, 'create'])->name('Religions.create');
-   Route::post('/Religions/store', [ReligionController::class, 'store'])->name('Religions.store');
-   Route::get('/Religions/edit/{id}', [ReligionController::class, 'edit'])->name('Religions.edit');
-   Route::post('/Religions/update/{id}', [ReligionController::class, 'update'])->name('Religions.update');
-   Route::get('/Religions/destroy/{id}', [ReligionController::class, 'destroy'])->name('Religions.destroy');
+    /*  بداية  انواع  الديانات */
+    Route::get('/Religions/index', [ReligionController::class, 'index'])->name('Religions.index');
+    Route::get('/Religions/create', [ReligionController::class, 'create'])->name('Religions.create');
+    Route::post('/Religions/store', [ReligionController::class, 'store'])->name('Religions.store');
+    Route::get('/Religions/edit/{id}', [ReligionController::class, 'edit'])->name('Religions.edit');
+    Route::post('/Religions/update/{id}', [ReligionController::class, 'update'])->name('Religions.update');
+    Route::get('/Religions/destroy/{id}', [ReligionController::class, 'destroy'])->name('Religions.destroy');
 
-
-
+    /*  بداية  الموظفين   */
+    Route::get('/Employees/index', [EmployeesController::class, 'index'])->name('Employees.index');
+    Route::get('/Employees/create', [EmployeesController::class, 'create'])->name('Employees.create');
+    Route::post('/Employees/store', [EmployeesController::class, 'store'])->name('Employees.store');
+    Route::get('/Employees/edit/{id}', [EmployeesController::class, 'edit'])->name('Employees.edit');
+    Route::post('/Employees/update/{id}', [EmployeesController::class, 'update'])->name('Employees.update');
+    Route::get('/Employees/destroy/{id}', [EmployeesController::class, 'destroy'])->name('Employees.destroy');
 });
 
 
