@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('title')
-أنواع الديانات
+بيانات الموظفين
 @endsection
 @section('contentheader')
 قائمة الضبط
 @endsection
 @section('contentheaderactivelink')
-<a href="{{ route('Religions.index') }}">   انواع  الديانات</a>
+<a href="{{ route('Employees.index') }}">     الموظفين</a>
 @endsection
 @section('contentheaderactive')
 عرض
@@ -15,8 +15,8 @@
 <div class="col-12">
    <div class="card">
       <div class="card-header">
-         <h3 class="card-title card_title_center">  بيانات  أنواع  ديانات الموظفين 
-            <a href="{{ route('Religions.create') }}" class="btn btn-sm btn-warning">اضافة جديد</a>
+         <h3 class="card-title card_title_center">  بيانات  الموظفين 
+            <a href="{{ route('Employees.create') }}" class="btn btn-sm btn-success">اضافة جديد</a>
          </h3>
       </div>
       <div class="card-body" id="ajax_responce_serachDiv">
