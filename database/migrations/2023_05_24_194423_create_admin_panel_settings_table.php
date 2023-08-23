@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -38,6 +39,21 @@ return new class extends Migration
 
             $table->timestamps();
         });
+        DB::table('admin_panel_settings')->insert(
+            [
+             ['company_name'=>'الشركة الاولي',
+             'phones'=>'11222',
+             'address'=>' العنوان',
+             'email'=>"info@test.com",
+             'added_by'=>1,
+             'updated_by'=>1,
+             'com_code'=>1,
+
+            ],
+          
+        
+            ]
+        );
     }
 
     /**
