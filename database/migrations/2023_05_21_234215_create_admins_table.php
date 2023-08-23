@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -24,6 +25,28 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('com_code');
         });
+        DB::table('admins')->insert(
+            [
+             ['name'=>'admin',
+             'email'=>'test@gmail.com',
+             'username'=>'admin',
+             'password'=>bcrypt("admin"),
+             'active'=>1,
+             'date'=>date("Y-m-d"),
+             'com_code'=>1,
+             'added_by'=>1,
+             'updated_by'=>1
+
+
+            ],
+          
+        
+            ]
+                
+     
+            
+          
+           );
     }
 
     /**
