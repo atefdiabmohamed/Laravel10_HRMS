@@ -437,6 +437,117 @@
                      @enderror
                   </div>
                </div>
+
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>    هل يمتلك رخصة قيادة</label>
+                     <select  name="does_has_Driving_License" id="does_has_Driving_License" class="form-control">
+                        <option value="">  اختر الحالة</option>
+                     <option   @if(old('graduation_estimate')==1) selected @endif  value="1">نعم </option>
+                     <option @if(old('graduation_estimate')==0 and old('graduation_estimate')!="" ) selected @endif value="2">لا</option>
+                
+                  </select>
+                     @error('does_has_Driving_License')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4 related_does_has_Driving_License"  style="display: none;">
+                  <div class="form-group">
+                     <label>  رقم رخصة القيادة</label>
+                     <input type="text" name="driving_License_degree" id="driving_License_degree" class="form-control" value="{{ old('driving_License_degree') }}" >
+                     @error('driving_License_degree')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-4 related_does_has_Driving_License"  style="display: none;">
+                  <div class="form-group">
+                     <label>  نوع رخصة القيادة</label>
+                     <select name="driving_license_types_id" id="driving_license_types_id" class="form-control select2 ">
+                        <option value="">اختر  الحالة </option>
+                        @if (@isset($other['driving_license_types']) && !@empty($other['driving_license_types']))
+                        @foreach ($other['driving_license_types'] as $info )
+                        <option @if(old('driving_license_types_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                        @endforeach
+                        @endif
+                     </select>
+                     @error('driving_license_types_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>    هل يمتلك  أقارب بالعمل </label>
+                     <select  name="has_Relatives" id="has_Relatives" class="form-control">
+                        <option value="">  اختر الحالة</option>
+                     <option   @if(old('has_Relatives')==1) selected @endif  value="1">نعم </option>
+                     <option @if(old('has_Relatives')==0 and old('has_Relatives')!="" ) selected @endif value="2">لا</option>
+                
+                  </select>
+                     @error('has_Relatives')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-8 Related_Relatives_detailsDiv"  style="display: none;">
+                  <div class="form-group">
+                     <label> تفاصيل الاقارب</label>
+                     <textarea type="text" name="Relatives_details" id="Relatives_details" class="form-control" >
+                        {{ old('Relatives_details') }}
+
+                     </textarea>
+                     @error('Relatives_details')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>    هل يمتلك اعاقة / عمليات سابقة </label>
+                     <select  name="is_Disabilities_processes" id="is_Disabilities_processes" class="form-control">
+                        <option value="">  اختر الحالة</option>
+                     <option   @if(old('is_Disabilities_processes')==1) selected @endif  value="1">نعم </option>
+                     <option @if(old('is_Disabilities_processes')==0 and old('is_Disabilities_processes')!="" ) selected @endif value="2">لا</option>
+                
+                  </select>
+                     @error('is_Disabilities_processes')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-8 Related_is_Disabilities_processesDiv"  style="display: none;">
+                  <div class="form-group">
+                     <label> تفاصيل الاعاقة / عمليات سابقة</label>
+                     <textarea type="text" name="Disabilities_processes" id="Disabilities_processes" class="form-control" >
+                        {{ old('Disabilities_processes') }}
+
+                     </textarea>
+                     @error('Disabilities_processes')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-12 " >
+                  <div class="form-group">
+                     <label> ملاحظات علي الموظف </label>
+                     <textarea type="text" name="notes" id="notes" class="form-control" >
+                        {{ old('notes') }}
+
+                     </textarea>
+                     @error('notes')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
            </div>
 
          </div>
@@ -541,5 +652,30 @@ $(document).on('change','#emp_military_id',function(e){
 
       }
       });
+
+      $(document).on('change','#does_has_Driving_License',function(e){
+ if($(this).val()==1  ){
+$(".related_does_has_Driving_License").show();
+ }else{
+   $(".related_does_has_Driving_License").hide();
+ }
+   });
+   $(document).on('change','#has_Relatives',function(e){
+ if($(this).val()==1  ){
+$(".Related_Relatives_detailsDiv").show();
+ }else{
+   $(".Related_Relatives_detailsDiv").hide();
+ }
+   });
+
+   $(document).on('change','#is_Disabilities_processes',function(e){
+ if($(this).val()==1  ){
+$(".Related_is_Disabilities_processesDiv").show();
+ }else{
+   $(".Related_is_Disabilities_processesDiv").hide();
+ }
+   });
+
+   
 </script>
 @endsection
