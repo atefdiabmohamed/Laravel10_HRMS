@@ -190,6 +190,253 @@
                   </div>
                </div>
 
+
+               
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>        تاريخ الميلاد</label>
+                     <input type="date" name="brith_date" id="brith_date" class="form-control" value="{{ old('brith_date') }}" >
+                     @error('brith_date')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>         رقم بطاقة الهوية</label>
+                     <input type="text" name="emp_national_idenity" id="emp_national_idenity" class="form-control" value="{{ old('emp_national_idenity') }}" >
+                     @error('emp_national_idenity')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>         مركز اصدار بطاقة الهوية </label>
+                     <input type="text" name="emp_identityPlace" id="emp_identityPlace" class="form-control" value="{{ old('emp_identityPlace') }}" >
+                     @error('emp_identityPlace')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>         تاريخ انتهاء بطاقة الهوية</label>
+                     <input type="date" name="emp_end_identityIDate" id="emp_end_identityIDate" class="form-control" value="{{ old('emp_end_identityIDate') }}" >
+                     @error('emp_end_identityIDate')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>   فصيلة الدم</label>
+                     <select name="blood_group_id" id="blood_group_id" class="form-control select2 ">
+                        <option value="">اختر الفصيلة</option>
+                        @if (@isset($other['blood_groups']) && !@empty($other['blood_groups']))
+                        @foreach ($other['blood_groups'] as $info )
+                        <option @if(old('blood_group_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                        @endforeach
+                        @endif
+                     </select>
+                     @error('blood_group_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>    الجنسية</label>
+                     <select name="emp_nationality_id" id="emp_nationality_id" class="form-control select2 ">
+                        <option value="">اختر الجنسية</option>
+                        @if (@isset($other['nationalities']) && !@empty($other['nationalities']))
+                        @foreach ($other['nationalities'] as $info )
+                        <option @if(old('emp_nationality_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                        @endforeach
+                        @endif
+                     </select>
+                     @error('emp_nationality_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>    الديانة</label>
+                     <select name="religion_id" id="religion_id" class="form-control select2 ">
+                        <option value="">اختر الديانة</option>
+                        @if (@isset($other['religions']) && !@empty($other['religions']))
+                        @foreach ($other['religions'] as $info )
+                        <option @if(old('religion_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                        @endforeach
+                        @endif
+                     </select>
+                     @error('religion_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>      البريد الالكتروني</label>
+                     <input type="text" name="emp_email" id="emp_email" class="form-control" value="{{ old('emp_email') }}" >
+                     @error('emp_email')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>    الدول</label>
+                     <select name="country_id" id="country_id" class="form-control select2 ">
+                        <option value="">اختر الدولة التابع لها الموظف</option>
+                        @if (@isset($other['countires']) && !@empty($other['countires']))
+                        @foreach ($other['countires'] as $info )
+                        <option @if(old('countires')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                        @endforeach
+                        @endif
+                     </select>
+                     @error('country_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="form-group" id="governorates_Div">
+                     <label>    المحافظات</label>
+                     <select name="governorates_id" id="governorates_id" class="form-control select2 ">
+                        <option value="">اختر المحافظة التابع لها الموظف</option>
+                      
+                     </select>
+                     @error('governorates_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="form-group" id="centers_div">
+                     <label>    المدينة/المركز</label>
+                     <select name="city_id" id="city_id" class="form-control select2 ">
+                        <option value="">اختر المدينة التابع لها الموظف</option>
+                      
+                     </select>
+                     @error('city_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>       عنوان الاقامة الحالي للموظف</label>
+                     <input type="text" name="staies_address" id="staies_address" class="form-control" value="{{ old('staies_address') }}" >
+                     @error('staies_address')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>     هاتف المنزل</label>
+                     <input type="text" name="emp_home_tel" id="emp_home_tel" class="form-control" value="{{ old('emp_home_tel') }}" >
+                     @error('emp_home_tel')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>     هاتف العمل</label>
+                     <input type="text" name="emp_work_tel" id="emp_work_tel" class="form-control" value="{{ old('emp_work_tel') }}" >
+                     @error('emp_work_tel')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>    حالة الخدمة العسكرية</label>
+                     <select name="emp_military_id" id="emp_military_id" class="form-control select2 ">
+                        <option value="">اختر  الحالة </option>
+                        @if (@isset($other['military_status']) && !@empty($other['military_status']))
+                        @foreach ($other['military_status'] as $info )
+                        <option @if(old('emp_military_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                        @endforeach
+                        @endif
+                     </select>
+                     @error('country_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4 related_miltary_1"  style="display: none;">
+                  <div class="form-group">
+                     <label>    تاريخ بداية الخدمة العسكرية	</label>
+                     <input type="date" name="emp_military_date_from" id="emp_military_date_from" class="form-control" value="{{ old('emp_military_date_from') }}" >
+                     @error('emp_military_date_from')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+
+               <div class="col-md-4 related_miltary_1"  style="display: none;">
+                  <div class="form-group">
+                     <label>    تاريخ نهاية الخدمة العسكرية	</label>
+                     <input type="date" name="emp_military_date_to" id="emp_military_date_to" class="form-control" value="{{ old('emp_military_date_to') }}" >
+                     @error('emp_military_date_to')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4 related_miltary_1"  style="display: none;">
+                  <div class="form-group">
+                     <label>     سلاح الخدمة العسكرية	</label>
+                     <input type="text" name="emp_military_wepon	" id="emp_military_wepon	" class="form-control" value="{{ old('emp_military_wepon') }}" >
+                     @error('emp_military_wepon	')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4 related_miltary_2"  style="display: none;">
+                  <div class="form-group">
+                     <label>    تاريخ اعفاء الخدمة العسكرية	</label>
+                     <input type="date" name="exemption_date" id="exemption_date" class="form-control" value="{{ old('exemption_date') }}" >
+                     @error('exemption_date')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+
+               <div class="col-md-4 related_miltary_2"  style="display: none;">
+                  <div class="form-group">
+                     <label>    سبب اعفاء الخدمة العسكرية	</label>
+                     <input type="text" name="exemption_reason" id="exemption_reason" class="form-control" value="{{ old('exemption_reason') }}" >
+                     @error('exemption_reason')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
+
+               <div class="col-md-4 related_miltary_3"  style="display: none;">
+                  <div class="form-group">
+                     <label>  سبب ومدة تأجيل الخدمة العسكرية</label>
+                     <input type="text" name="postponement_reason" id="postponement_reason" class="form-control" value="{{ old('postponement_reason') }}" >
+                     @error('postponement_reason')
+                     <span class="text-danger">{{ $message }}</span> 
+                     @enderror
+                  </div>
+               </div>
            </div>
 
          </div>
@@ -224,11 +471,75 @@
 @endsection
 @section("script")
 <script src="{{ asset('assets/admin/plugins/select2/js/select2.full.min.js') }}"> </script>
-<script src="{{ asset('assets/admin/js/employees.js') }}"> </script>
 <script>
    //Initialize Select2 Elements
    $('.select2').select2({
      theme: 'bootstrap4'
    });
+
+   $(document).on('change','#country_id',function(e){
+      get_governorates();
+      });
+   function get_governorates(){
+   var country_id=$("#country_id").val();
+   jQuery.ajax({
+   url:'{{ route('Employees.get_governorates') }}',
+   type:'post',
+   'dataType':'html',
+   cache:false,
+   data:{"_token":'{{ csrf_token() }}',country_id:country_id},
+   success: function(data){
+   $("#governorates_Div").html(data);
+   },
+   error:function(){
+   alert("عفوا لقد حدث خطأ ");
+   }
+   
+   });
+}
+
+$(document).on('change','#governorates_id',function(e){
+      get_centers();
+      });
+   function get_centers(){
+   var governorates_id=$("#governorates_id").val();
+   jQuery.ajax({
+   url:'{{ route('Employees.get_centers') }}',
+   type:'post',
+   'dataType':'html',
+   cache:false,
+   data:{"_token":'{{ csrf_token() }}',governorates_id:governorates_id},
+   success: function(data){
+   $("#centers_div").html(data);
+   },
+   error:function(){
+   alert("عفوا لقد حدث خطأ ");
+   }
+   
+   });
+}
+
+$(document).on('change','#emp_military_id',function(e){
+      var emp_military_id=$(this).val();
+      if(emp_military_id==1){
+         $(".related_miltary_1").show();
+         $(".related_miltary_2").hide();
+         $(".related_miltary_3").hide();
+      }else if(emp_military_id==2){
+         $(".related_miltary_1").hide();
+         $(".related_miltary_2").show();
+         $(".related_miltary_3").hide(); 
+      }
+      else if(emp_military_id==3){
+         $(".related_miltary_1").hide();
+         $(".related_miltary_2").hide();
+         $(".related_miltary_3").show();   
+      }else{
+         $(".related_miltary_1").hide();
+         $(".related_miltary_2").hide();
+         $(".related_miltary_3").hide();
+
+      }
+      });
 </script>
 @endsection

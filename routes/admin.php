@@ -117,6 +117,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/Employees/edit/{id}', [EmployeesController::class, 'edit'])->name('Employees.edit');
     Route::post('/Employees/update/{id}', [EmployeesController::class, 'update'])->name('Employees.update');
     Route::get('/Employees/destroy/{id}', [EmployeesController::class, 'destroy'])->name('Employees.destroy');
+    Route::post("/Employees/get_governorates", [EmployeesController::class, 'get_governorates'])->name('Employees.get_governorates');
+    Route::post("/Employees/get_centers", [EmployeesController::class, 'get_centers'])->name('Employees.get_centers');
+
 });
 
 
