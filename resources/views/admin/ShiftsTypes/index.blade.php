@@ -161,7 +161,7 @@
    }
    
    });
-   
+}
    $(document).on('click','#ajax_pagination_in_search a',function(e){
    e.preventDefault();
    var type_search=$("#type_search").val();
@@ -185,7 +185,7 @@
    
    });
    
-   }
+   
    
    
    
