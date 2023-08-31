@@ -17,6 +17,8 @@ use App\Models\centers;
 use App\Models\blood_groups;
 use App\Models\Military_status;
 use App\Models\driving_license_type;
+use App\Models\Language;
+use App\Models\Shifts_type;
 
 class EmployeesController extends Controller
 {
@@ -39,7 +41,9 @@ class EmployeesController extends Controller
         $other['blood_groups'] = get_cols_where(new blood_groups(), array("id", "name"), array("com_code" => $com_code, "active" => 1));
         $other['military_status'] = get_cols_where(new Military_status(), array("id", "name"), array("active" => 1),'id','ASC');
         $other['driving_license_types'] = get_cols_where(new driving_license_type(), array("id", "name"), array("active" => 1,"com_code" => $com_code),'id','ASC');
-      
+        $other['shifts_types'] = get_cols_where(new Shifts_type(), array("id", "type","from_time","to_time","total_hour"), array("active" => 1,"com_code" => $com_code),'id','ASC');
+        $other['languages'] = get_cols_where(new Language(), array("id", "name"), array("active" => 1,"com_code" => $com_code),'id','ASC');
+
         return view("admin.Employees.create", ['other' => $other]);
     }
     public function get_governorates(Request $request)

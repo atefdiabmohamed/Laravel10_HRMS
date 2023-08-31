@@ -28,6 +28,7 @@
                      <option value="">اختر النوع</option>
                      <option @if(old('type')==1) selected @endif value="1">صباحي</option>
                      <option @if(old('type')==2) selected @endif value="2">مسائي</option>
+                     <option @if(old('type')==3) selected @endif value="3"> يوم كامل</option>
                   </select>
                   @error('type')
                   <span class="text-danger">{{ $message }}</span> 

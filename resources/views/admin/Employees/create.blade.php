@@ -24,7 +24,7 @@
          </h3>
       </div>
       <div class="card-body">
-         <form action="{{ route('Employees.store') }}" method="post">
+         <form action="{{ route('Employees.store') }}" method="post" enctype="multipart/form-data">
             @csrf
       
    <!-- /.card -->
@@ -103,39 +103,7 @@
                </div>
 
 
-               <div class="col-md-4">
-                  <div class="form-group">
-                     <label>   الادارة التابع لها الموظف</label>
-                     <select name="emp_Departments_code " id="emp_Departments_code " class="form-control select2 ">
-                        <option value="">اختر الادارة</option>
-                        @if (@isset($other['departements']) && !@empty($other['departements']))
-                        @foreach ($other['departements'] as $info )
-                        <option @if(old('departements_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
-                        @endforeach
-                        @endif
-                     </select>
-                     @error('departements_id')
-                     <span class="text-danger">{{ $message }}</span>
-                     @enderror
-                  </div>
-               </div>
-
-               <div class="col-md-4">
-                  <div class="form-group">
-                     <label> وظيفة الموظف</label>
-                     <select name="emp_jobs_id  " id="emp_jobs_id  " class="form-control select2 ">
-                        <option value="">اختر الوظيفة</option>
-                        @if (@isset($other['jobs']) && !@empty($other['jobs']))
-                        @foreach ($other['jobs'] as $info )
-                        <option @if(old('jobs')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
-                        @endforeach
-                        @endif
-                     </select>
-                     @error('emp_jobs_id')
-                     <span class="text-danger">{{ $message }}</span>
-                     @enderror
-                  </div>
-               </div>
+   
 
                <div class="col-md-4">
                   <div class="form-group">
@@ -261,7 +229,22 @@
                      @enderror
                   </div>
                </div>
-
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>  اللغة الاساسية التي يتحدث بها</label>
+                     <select name="emp_lang_id  " id="emp_lang_id  " class="form-control select2 ">
+                        <option value="">اختر الوظيفة</option>
+                        @if (@isset($other['languages']) && !@empty($other['languages']))
+                        @foreach ($other['languages'] as $info )
+                        <option @if(old('emp_lang_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                        @endforeach
+                        @endif
+                     </select>
+                     @error('emp_lang_id')
+                     <span class="text-danger">{{ $message }}</span>
+                     @enderror
+                  </div>
+               </div>
                <div class="col-md-4">
                   <div class="form-group">
                      <label>    الديانة</label>
@@ -552,11 +535,364 @@
 
          </div>
           <div class="tab-pane fade" id="custom-content-jobs_data" role="tabpanel" aria-labelledby="jobs_data">
-             Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam. 
-          </div>
+            <br>
+            <div class="row">
+            <div class="col-md-4 " >
+               <div class="form-group">
+                  <label>   تاريخ التعيين</label>
+                  <input type="date" name="emp_start_date" id="emp_start_date" class="form-control" value="{{ old('emp_start_date') }}" >
+                  @error('emp_start_date')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>    الحالة الوظيفية</label>
+                  <select  name="Functiona_status" id="Functiona_status" class="form-control">
+                  <option   @if(old('Functiona_status')==1) selected @endif  value="1">يعمل</option>
+                  <option @if(old('Functiona_status')==0 and old('Functiona_status')!="" ) selected @endif value="0">خارج الخدمة</option>
+             
+               </select>
+                  @error('Functiona_status')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>   الادارة التابع لها الموظف</label>
+                  <select name="emp_Departments_code " id="emp_Departments_code " class="form-control select2 ">
+                     <option value="">اختر الادارة</option>
+                     @if (@isset($other['departements']) && !@empty($other['departements']))
+                     @foreach ($other['departements'] as $info )
+                     <option @if(old('departements_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                     @endforeach
+                     @endif
+                  </select>
+                  @error('departements_id')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label> وظيفة الموظف</label>
+                  <select name="emp_jobs_id  " id="emp_jobs_id  " class="form-control select2 ">
+                     <option value="">اختر الوظيفة</option>
+                     @if (@isset($other['jobs']) && !@empty($other['jobs']))
+                     @foreach ($other['jobs'] as $info )
+                     <option @if(old('jobs')==$info->id) selected="selected" @endif value="{{ $info->id }}"> {{ $info->name }} </option>
+                     @endforeach
+                     @endif
+                  </select>
+                  @error('emp_jobs_id')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>  هل  له بصمة حضور وانصراف</label>
+                  <select  name="does_has_ateendance" id="does_has_ateendance" class="form-control">
+                  <option   @if(old('does_has_ateendance')==1) selected @endif  value="1">نعم</option>
+                  <option @if(old('does_has_ateendance')==0 and old('does_has_ateendance')!="" ) selected @endif value="0"> لا </option>
+             
+               </select>
+                  @error('does_has_ateendance')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>  هل  له شفت ثابت</label>
+                  <select  name="is_has_fixced_shift" id="is_has_fixced_shift" class="form-control">
+                     <option value="">اختر الحالة</option>
+                  <option   @if(old('is_has_fixced_shift')==1) selected @endif  value="1">نعم</option>
+                  <option @if(old('is_has_fixced_shift')==0 and old('is_has_fixced_shift')!="" ) selected @endif value="0"> لا </option>
+             
+               </select>
+                  @error('is_has_fixced_shift')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4 relatedfixced_shift"  @if(old('do_has_shift')!=1) style="display: none;" @endif>
+               <div class="form-group">
+                  <label>       أنواع الشفتات</label>
+                  <select name="shifts_types_id" id="shifts_types_id" class="form-control select2 ">
+                     <option value="">اختر الشفت</option>
+                     @if (@isset($other['shifts_types']) && !@empty($other['shifts_types']))
+                     @foreach ($other['shifts_types'] as $info )
+                     <option @if(old('shifts_types_id')==$info->id) selected="selected" @endif value="{{ $info->id }}"> 
+                        
+                        @if($info->type==1) صباحي @elseif ($info->type==2) مسائي @else يوم كامل @endif
+                        من
+                        @php
+                        $dt=new DateTime($info->from_time);
+                        $time=$dt->format("h:i");
+                        $newDateTime=date("A",strtotime($info->from_time));
+                        $newDateTimeType= (($newDateTime=='AM')?'صباحا ':'مساء'); 
+                        @endphp
+                       
+                        {{ $time }}
+                        {{ $newDateTimeType }}  
+                        الي
+                        @php
+                        $dt=new DateTime($info->to_time);
+                        $time=$dt->format("h:i");
+                        $newDateTime=date("A",strtotime($info->to_time));
+                        $newDateTimeType= (($newDateTime=='AM')?'صباحا ':'مساء'); 
+                        @endphp
+                       
+                        {{ $time }}
+                        {{ $newDateTimeType }}  
+                     عدد
+                     {{ $info->total_hour*1  }} ساعات
+                     
+                     
+                     
+                     
+                     </option>
+                     @endforeach
+                     @endif
+                  </select>
+                  @error('shifts_types_id')
+                  <span class="text-danger">{{ $message }}</span>
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4" id="daily_work_hourDiv" style="display: none;">
+               <div class="form-group">
+                  <label>       عدد ساعات العمل اليومي</label>
+                  <input type="text" name="daily_work_hour" id="daily_work_hour" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" class="form-control" value="{{ old('daily_work_hour') }}" >
+                  @error('daily_work_hour')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4" >
+               <div class="form-group">
+                  <label>     راتب الموظف الشهري</label>
+                  <input type="text" name="emp_sal" id="emp_sal" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" class="form-control" value="{{ old('emp_sal') }}" >
+                  @error('emp_sal')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>  هل  له حافز </label>
+                  <select  name="MotivationType" id="MotivationType" class="form-control">
+                     <option value="">اختر الحالة</option>
+                  <option   @if(old('MotivationType')==1) selected @endif  value="1">ثابت</option>
+                  <option   @if(old('MotivationType')==2) selected @endif  value="2">متغير</option>
+                  <option @if(old('MotivationType')==0 and old('MotivationType')!="" ) selected @endif value="0"> لايوجد </option>
+             
+               </select>
+                  @error('MotivationType')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4 " id="MotivationDIV" style="display: none" >
+               <div class="form-group">
+                  <label> قيمة الحافز الشهري الثابت</label>
+                  <input type="text" name="Motivation" id="Motivation" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" class="form-control" value="{{ old('Motivation') }}" >
+                  @error('Motivation')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>  هل  له تأمين اجتماعي </label>
+                  <select  name="isSocialnsurance" id="isSocialnsurance" class="form-control">
+                     <option value="">اختر الحالة</option>
+                  <option   @if(old('isSocialnsurance')==1) selected @endif  value="1">نعم</option>
+                  <option @if(old('isSocialnsurance')==0 and old('isSocialnsurance')!="" ) selected @endif value="0"> لا </option>
+             
+               </select>
+                  @error('isSocialnsurance')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4 relatedisSocialnsurance" " style="display: none" >
+               <div class="form-group">
+                  <label> قيمة التأمين المستقطع شهرياً</label>
+                  <input type="text" name="Socialnsurancecutmonthely" id="Socialnsurancecutmonthely" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" class="form-control" value="{{ old('Socialnsurancecutmonthely') }}" >
+                  @error('Socialnsurancecutmonthely')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4 relatedisSocialnsurance" " style="display: none" >
+               <div class="form-group">
+                  <label> رقم التامين الاجتماعي للموظف</label>
+                  <input type="text" name="SocialnsuranceNumber" id="SocialnsuranceNumber" class="form-control" value="{{ old('SocialnsuranceNumber') }}" >
+                  @error('SocialnsuranceNumber')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>  هل  له تأمين طبي </label>
+                  <select  name="ismedicalinsurance" id="ismedicalinsurance" class="form-control">
+                     <option value="">اختر الحالة</option>
+                  <option   @if(old('ismedicalinsurance')==1) selected @endif  value="1">نعم</option>
+                  <option @if(old('ismedicalinsurance')==0 and old('ismedicalinsurance')!="" ) selected @endif value="0"> لا </option>
+             
+               </select>
+                  @error('ismedicalinsurance')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4 relatedismedicalinsurance" " style="display: none" >
+               <div class="form-group">
+                  <label> قيمة التأمين الطبي المستقطع شهرياً</label>
+                  <input type="text" name="medicalinsurancecutmonthely" id="medicalinsurancecutmonthely" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" class="form-control" value="{{ old('medicalinsurancecutmonthely') }}" >
+                  @error('medicalinsurancecutmonthely')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4 relatedismedicalinsurance" " style="display: none" >
+               <div class="form-group">
+                  <label> رقم التامين الطبي للموظف</label>
+                  <input type="text" name="medicalinsuranceNumber" id="medicalinsuranceNumber" class="form-control" value="{{ old('medicalinsuranceNumber') }}" >
+                  @error('medicalinsuranceNumber')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label> نوع صرف راتب الموظف</label>
+                  <select  name="sal_cach_or_visa" id="sal_cach_or_visa" class="form-control">
+                     <option value="">اختر الحالة</option>
+                  <option   @if(old('sal_cach_or_visa')==1) selected @endif  value="1">كاش</option>
+                  <option   @if(old('sal_cach_or_visa')==2) selected @endif  value="2">فيزا</option>
+             
+               </select>
+                  @error('sal_cach_or_visa')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label> هل له رصيد اجازات سنوي</label>
+                  <select  name="is_active_for_Vaccation" id="is_active_for_Vaccation" class="form-control">
+                     <option value="">اختر الحالة</option>
+                  <option   @if(old('is_active_for_Vaccation')==1) selected @endif  value="1">نعم</option>
+                  <option   @if(old('is_active_for_Vaccation')==0 and old('is_active_for_Vaccation')!=""  ) selected @endif  value="0">لا</option>
+             
+               </select>
+                  @error('is_active_for_Vaccation')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4 " >
+               <div class="form-group">
+                  <label>  شخص يمكن الرجوع اليه للضرورة  	</label>
+                  <input type="text" name="urgent_person_details" id="urgent_person_details" class="form-control" value="{{ old('urgent_person_details') }}" >
+                  @error('urgent_person_details')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+         </div>
+         </div>
           <div class="tab-pane fade" id="custom-content-addtional_data" role="tabpanel" aria-labelledby="addtional_data">
-             Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna. 
-          </div>
+            <br>
+            <div class="row">
+            <div class="col-md-4 " >
+               <div class="form-group">
+                  <label>  اسم الكفيل 	</label>
+                  <input type="text" name="emp_cafel" id="emp_cafel" class="form-control" value="{{ old('emp_cafel') }}" >
+                  @error('emp_cafel')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4 " >
+               <div class="form-group">
+                  <label>   رقم الباسبور ان وجد 	</label>
+                  <input type="text" name="emp_pasport_no" id="emp_pasport_no" class="form-control" value="{{ old('emp_pasport_no') }}" >
+                  @error('emp_pasport_no')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-4 " >
+               <div class="form-group">
+                  <label>جهة اصدار الباسبور	</label>
+                  <input type="text" name="emp_pasport_from" id="emp_pasport_from" class="form-control" value="{{ old('emp_pasport_from') }}" >
+                  @error('emp_pasport_from')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4 " >
+               <div class="form-group">
+                  <label>  تاريخ انتهاء الباسبور	</label>
+                  <input type="text" name="emp_pasport_exp" id="emp_pasport_exp" class="form-control" value="{{ old('emp_pasport_exp') }}" >
+                  @error('emp_pasport_exp')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+
+            <div class="col-md-8">
+               <div class="form-group">
+                  <label>    عنوان اقامة الموظف في بلده الام	</label>
+                  <input type="text" name="emp_Basic_stay_com" id="emp_Basic_stay_com" class="form-control" value="{{ old('emp_Basic_stay_com') }}" >
+                  @error('emp_Basic_stay_com')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>   الصورة الشخصية للموظف</label>
+                  <input type="file" name="emp_photo" id="emp_photo" class="form-control" value="{{ old('emp_photo') }}" >
+                  @error('emp_photo')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>     السرة الذاتية للموظف</label>
+                  <input type="file" name="emp_CV" id="emp_CV" class="form-control" value="{{ old('emp_CV') }}" >
+                  @error('emp_CV')
+                  <span class="text-danger">{{ $message }}</span> 
+                  @enderror
+               </div>
+            </div>
+         </div>
+
+         </div>
      
         </div>
        
@@ -569,7 +905,7 @@
             
             <div class="col-md-12">
                <div class="form-group text-center">
-                  <button class="btn btn-sm btn-success" type="submit" name="submit">اضف الديانة </button>
+                  <button class="btn btn-sm btn-success" type="submit" name="submit">اضف الموظف </button>
                   <a href="{{ route('Religions.index') }}" class="btn btn-danger btn-sm">الغاء</a>
                </div>
             </div>
@@ -676,6 +1012,46 @@ $(".Related_is_Disabilities_processesDiv").show();
  }
    });
 
+   $(document).on('change','#is_has_fixced_shift',function(e){
+ if($(this).val()==1  ){
+$(".relatedfixced_shift").show();
+$("#daily_work_hourDiv").hide();
+ }else{
+   $(".relatedfixced_shift").hide();
+   $("#daily_work_hourDiv").show();
+
+ }
+   });
    
+   $(document).on('change','#MotivationType',function(e){
+ if($(this).val()!=1 ){
+$("#MotivationDIV").hide();
+ }else{
+   $("#MotivationDIV").show();
+
+ }
+ 
+   });
+
+   $(document).on('change','#isSocialnsurance',function(e){
+ if($(this).val()!=1 ){
+$(".relatedisSocialnsurance").hide();
+ }else{
+   $(".relatedisSocialnsurance").show();
+
+ }
+
+   });
+   
+
+   $(document).on('change','#ismedicalinsurance',function(e){
+ if($(this).val()!=1 ){
+$(".relatedismedicalinsurance").hide();
+ }else{
+   $(".relatedismedicalinsurance").show();
+
+ }
+
+   });
 </script>
 @endsection
