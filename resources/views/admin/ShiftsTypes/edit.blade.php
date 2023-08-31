@@ -28,6 +28,7 @@
                      <option value="">اختر النوع</option>
                      <option @if(old('type',$data['type'])==1) selected @endif value="1">صباحي</option>
                      <option @if(old('type',$data['type'])==2) selected @endif value="2">مسائي</option>
+                     <option @if(old('type',$data['type'])==3) selected @endif value="3">مسائي</option>
                   </select>
                   @error('type')
                   <span class="text-danger">{{ $message }}</span> 
