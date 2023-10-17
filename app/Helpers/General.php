@@ -6,7 +6,7 @@ $filename = time() . rand(100, 999) . '.' . $extension;
 $image->getClientOriginalName = $filename;
 $image->move($folder, $filename);
 return $filename;
-}
+} 
 /*get some cols by pagination table */
 function get_cols_where_p($model=null, $columns_names = array(), $where = array(), $order_field="id",$order_type="DESC",$pagination_counter=13)
 {
