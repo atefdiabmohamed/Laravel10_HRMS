@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\BranchesController;
 use App\Http\Controllers\Admin\ShiftsTypesController;
 use App\Http\Controllers\Admin\DepartementsController;
 use App\Http\Controllers\Admin\Jobs_categoriesController;;
-
+ 
 use App\Http\Controllers\Admin\QualificationsController;
 use App\Http\Controllers\Admin\OccasionsController;
 use App\Http\Controllers\Admin\ResignationsController;
